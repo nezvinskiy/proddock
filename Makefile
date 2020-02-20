@@ -19,3 +19,9 @@ proddock-pull:
 
 proddock-stop:
 	docker-compose stop
+
+db-logs:
+	docker-compose logs db
+
+db-bash:
+	docker-compose exec db bash

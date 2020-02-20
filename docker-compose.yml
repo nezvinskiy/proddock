@@ -32,6 +32,7 @@ services:
     volumes:
       - ${APP_CODE_PATH_HOST}:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
+      - ./nginx/log:/var/log/nginx/
     networks:
       - app-network
 

@@ -33,8 +33,20 @@ services:
       - ${APP_CODE_PATH_HOST}:/var/www
       - ./nginx/conf.d/:/etc/nginx/conf.d/
       - ./nginx/log:/var/log/nginx/
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
     networks:
       - app-network
+
+  #CertBot for SSL Let’s Encrypt
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
 
   #MySQL Service
   db:

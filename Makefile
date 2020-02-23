@@ -25,3 +25,9 @@ db-logs:
 
 db-bash:
 	docker-compose exec db bash
+
+app-bash:
+	docker-compose exec app-bash
+
+app-cli-bash:
+	docker-compose exec app-cli bash

@@ -24,13 +24,13 @@ services:
     build:
       context: .
       dockerfile: ./php-cli/Dockerfile
-    image: digitalocean.com/php
+    image: digitalocean.com/php-cli
     container_name: app-cli
     restart: unless-stopped
     tty: true
     environment:
-      SERVICE_NAME: app
-      SERVICE_TAGS: dev
+      SERVICE_NAME: app-cli
+      SERVICE_TAGS: dev-cli
     working_dir: /var/www
     volumes:
       - ${APP_CODE_PATH_HOST}:/var/www

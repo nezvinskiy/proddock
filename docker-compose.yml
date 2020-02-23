@@ -38,6 +38,17 @@ services:
     networks:
       - app-network
 
+  node:
+    image: node:12-stretch
+    container_name: node
+    restart: unless-stopped
+    tty: true
+    working_dir: /var/www
+    volumes:
+      - ${APP_CODE_PATH_HOST}:/var/www
+    networks:
+      - app-network
+
   #Nginx Service
   webserver:
     image: nginx:alpine

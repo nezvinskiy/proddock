@@ -92,6 +92,7 @@ services:
     volumes:
       - dbdata:/var/lib/mysql/
       - ./mysql/my.cnf:/etc/mysql/my.cnf
+      - ./data/backups:/var/backups
     networks:
       - app-network
     command: --max_allowed_packet=256M --collation-server=utf8mb4_unicode_ci --character-set-server=utf8mb4 --default-authentication-plugin=mysql_native_password
